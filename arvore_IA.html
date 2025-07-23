@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árvore de Tipos de IA</title>
+    <style>
+        /* --- Estilos Gerais --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            padding: 40px 20px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* --- Container da Árvore --- */
+        .tree-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #1a2b4d;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            color: #5a677d;
+            margin-bottom: 30px;
+        }
+
+        /* --- Estilos da Árvore --- */
+        .tree {
+            text-align: left;
+            display: inline-block;
+        }
+        
+        .tree ul {
+            padding-left: 25px;
+            position: relative;
+            margin-left: 5px;
+        }
+
+        .tree li {
+            list-style-type: none;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .tree li > div {
+            display: flex;
+            align-items: center;
+        }
+        
+        /* --- Desenho das Linhas de Conexão --- */
+        .tree ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 2px solid #cbd5e1;
+            width: 0;
+            height: 100%;
+        }
+
+        .tree li::before {
+            content: '';
+            position: absolute;
+            top: 18px; 
+            left: -25px;
+            border-top: 2px solid #cbd5e1;
+            width: 25px;
+            height: 0;
+        }
+
+        .tree li:last-child::before {
+            height: 18px; 
+        }
+
+        /* --- Estilo dos Nós da Árvore --- */
+        .tree li > div > span {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 8px;
+            background-color: #f0f5ff;
+            border: 1px solid #d6e4ff;
+            color: #1e3a8a;
+            min-width: 120px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Estilos para Interatividade (Nós Expansíveis) --- */
+        .tree li.collapsible > div > span {
+            cursor: pointer;
+            background-color: #e0e7ff;
+            border-color: #a5b4fc;
+            font-weight: 600;
+            color: #3730a3;
+        }
+        
+        .tree li.collapsible > div > span:hover {
+            background-color: #c7d2fe;
+            border-color: #818cf8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .tree li.collapsible > div > span::before {
+            content: '− ';
+            font-family: monospace;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .tree li.collapsible.collapsed > div > span::before {
+            content: '+ ';
+        }
+        
+        .tree li.collapsible > ul {
+            max-height: 1000000px;
+            overflow: hidden;
+            transition: max-height 0.2s ease-in-out;
+        }
+        
+        .tree li.collapsible.collapsed > ul {
+            max-height: 0;
+        }
+
+        /* --- Estilo para o Botão de Link --- */
+        .link-btn {
+            background-color: #e2e8f0;
+            color: #475569;
+            border: none;
+            border-radius: 6px;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.1s ease;
+            text-decoration: none;
+        }
+        .link-btn:hover {
+            background-color: #cbd5e1;
+            color: #1e293b;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="tree-container">
+        <h1>Arvore de tipos de IA</h1>
+        <p>Clique em nas caixas azuis para expandir e em `>` para abrir a Wikipedia referente de cada item.</p>
+
+        <div class="tree">
+            <ul>
+                <li class="collapsible">
+                    <div>
+                        <span>Inteligência Artificial (IA)</span><a href="https://pt.wikipedia.org/wiki/Intelig%C3%AAncia_artificial" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Inteligência Artificial (IA)">&gt;</a>
+                    </div>
+                    <ul>
+                        <li class="collapsible">
+                             <div>
+                                <span>Aprendizado de Máquina</span><a href="https://pt.wikipedia.org/wiki/Aprendizagem_de_m%C3%A1quina" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Aprendizado de Máquina">&gt;</a>
+                            </div>
+                            <ul>
+                                <li class="collapsible collapsed">
+                                    <div>
+                                        <span>Supervisionado</span><a href="https://pt.wikipedia.org/wiki/Aprendizagem_supervisionada" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Supervisionado">&gt;</a>
+                                    </div>
+                                    <ul>
+                                        <li><div><span>Regressão Linear</span><a href="https://pt.wikipedia.org/wiki/Regress%C3%A3o_linear" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Regressão Linear">&gt;</a></div></li>
+                                        <li><div><span>Máquinas de Vetores de Suporte (SVM)</span><a href="https://pt.wikipedia.org/wiki/M%C3%A1quina_de_vetores_de_suporte" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre SVM">&gt;</a></div></li>
+                                        <li><div><span>Árvores de Decisão</span><a href="https://pt.wikipedia.org/wiki/%C3%81rvore_de_decis%C3%A3o" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Árvores de Decisão">&gt;</a></div></li>
+                                        <li><div><span>Random Forest</span><a href="https://pt.wikipedia.org/wiki/Random_forest" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Random Forest">&gt;</a></div></li>
+                                    </ul>
+                                </li>
+                                <li class="collapsible collapsed">
+                                     <div>
+                                        <span>Não Supervisionado</span><a href="https://pt.wikipedia.org/wiki/Aprendizagem_n%C3%A3o_supervisionada" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Não Supervisionado">&gt;</a>
+                                    </div>
+                                    <ul>
+                                        <li><div><span>K-Means (Clusterização)</span><a href="https://pt.wikipedia.org/wiki/K-means" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre K-Means">&gt;</a></div></li>
+                                        <li><div><span>DBSCAN (Clusterização)</span><a href="https://en.wikipedia.org/wiki/DBSCAN" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre DBSCAN">&gt;</a></div></li>
+                                        <li><div><span>PCA (Redução de Dim.)</span><a href="https://pt.wikipedia.org/wiki/An%C3%A1lise_de_componentes_principais" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre PCA">&gt;</a></div></li>
+                                    </ul>
+                                </li>
+                                <li class="collapsible collapsed">
+                                     <div>
+                                        <span>Por Reforço</span><a href="https://pt.wikipedia.org/wiki/Aprendizagem_por_refor%C3%A7o" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Por Reforço">&gt;</a>
+                                    </div>
+                                    <ul>
+                                        <li><div><span>Q-Learning</span><a href="https://pt.wikipedia.org/wiki/Q-learning" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Q-Learning">&gt;</a></div></li>
+                                        <li><div><span>Deep Q-Networks (DQN)</span><a href="https://en.wikipedia.org/wiki/Deep_Q-learning" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre DQN">&gt;</a></div></li>
+                                        <li><div><span>A3C</span><a href="https://en.wikipedia.org/wiki/Asynchronous_advantage_actor-critic" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre A3C">&gt;</a></div></li>
+                                    </ul>
+                                </li>
+                                <li class="collapsible collapsed">
+                                     <div>
+                                        <span>Deep Learning (Modelos)</span><a href="https://pt.wikipedia.org/wiki/Aprendizagem_profunda" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Deep Learning">&gt;</a>
+                                    </div>
+                                     <ul>
+                                        <li><div><span>Redes Neurais Convolucionais (CNN)</span><a href="https://pt.wikipedia.org/wiki/Rede_neural_convolucional" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre CNN">&gt;</a></div></li>
+                                        <li><div><span>Redes Neurais Recorrentes (RNN)</span><a href="https://pt.wikipedia.org/wiki/Rede_neural_recorrente" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre RNN">&gt;</a></div></li>
+                                        <li><div><span>Transformers</span><a href="https://pt.wikipedia.org/wiki/Transformer_(aprendizado_de_m%C3%A1quina)" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Transformers">&gt;</a></div></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="collapsible collapsed">
+                             <div>
+                                <span>Processamento de Linguagem Natural (PLN)</span><a href="https://pt.wikipedia.org/wiki/Processamento_de_linguagem_natural" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre PLN">&gt;</a>
+                            </div>
+                            <ul>
+                                <li class="collapsible collapsed">
+                                     <div>
+                                        <span>Modelos Famosos</span><a href="https://pt.wikipedia.org/wiki/Processamento_de_linguagem_natural#Modelos_de_linguagem" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Modelos Famosos de PLN">&gt;</a>
+                                    </div>
+                                    <ul>
+                                        <li><div><span>BERT</span><a href="https://pt.wikipedia.org/wiki/BERT_(modelo_de_linguagem)" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre BERT">&gt;</a></div></li>
+                                        <li><div><span>GPT (ex: GPT-3, GPT-4)</span><a href="https://pt.wikipedia.org/wiki/Generative_Pre-trained_Transformer" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre GPT">&gt;</a></div></li>
+                                        <li><div><span>T5</span><a href="https://en.wikipedia.org/wiki/Text-to-Text_Transfer_Transformer" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre T5">&gt;</a></div></li>
+                                        <li><div><span>LLaMA</span><a href="https://pt.wikipedia.org/wiki/LLaMA" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre LLaMA">&gt;</a></div></li>
+                                    </ul>
+                                </li>
+                                <li class="collapsible collapsed">
+                                     <div>
+                                        <span>Técnicas</span><a href="https://pt.wikipedia.org/wiki/Processamento_de_linguagem_natural#Tarefas" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Técnicas de PLN">&gt;</a>
+                                    </div>
+                                    <ul>
+                                        <li><div><span>Word Embeddings (Word2Vec, GloVe)</span><a href="https://pt.wikipedia.org/wiki/Word_embedding" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Word Embeddings">&gt;</a></div></li>
+                                        <li><div><span>Análise de Sentimentos</span><a href="https://pt.wikipedia.org/wiki/An%C3%A1lise_de_sentimentos" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Análise de Sentimentos">&gt;</a></div></li>
+                                        <li><div><span>Tradução Automática</span><a href="https://pt.wikipedia.org/wiki/Tradu%C3%A7%C3%A3o_autom%C3%A1tica" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Tradução Automática">&gt;</a></div></li>
+                                        <li><div><span>Sumarização de Texto</span><a href="https://pt.wikipedia.org/wiki/Sumariza%C3%A7%C3%A3o_autom%C3%A1tica" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Sumarização de Texto">&gt;</a></div></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="collapsible collapsed">
+                             <div>
+                                <span>Visão Computacional</span><a href="https://pt.wikipedia.org/wiki/Vis%C3%A3o_computacional" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Visão Computacional">&gt;</a>
+                            </div>
+                            <ul>
+                                <li class="collapsible collapsed">
+                                     <div>
+                                        <span>Modelos Famosos</span><a href="https://en.wikipedia.org/wiki/List_of_computer_vision_topics" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Modelos Famosos de Visão Computacional">&gt;</a>
+                                    </div>
+                                    <ul>
+                                        <li><div><span>AlexNet</span><a href="https://en.wikipedia.org/wiki/AlexNet" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre AlexNet">&gt;</a></div></li>
+                                        <li><div><span>VGG16</span><a href="https://en.wikipedia.org/wiki/VGGNet" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre VGG16">&gt;</a></div></li>
+                                        <li><div><span>ResNet</span><a href="https://en.wikipedia.org/wiki/Residual_neural_network" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre ResNet">&gt;</a></div></li>
+                                        <li><div><span>YOLO (You Only Look Once)</span><a href="https://pt.wikipedia.org/wiki/YOLO_(algoritmo)" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre YOLO">&gt;</a></div></li>
+                                        <li><div><span>Vision Transformers (ViT)</span><a href="https://en.wikipedia.org/wiki/Vision_transformer" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Vision Transformers">&gt;</a></div></li>
+                                    </ul>
+                                </li>
+                                <li class="collapsible collapsed">
+                                     <div>
+                                        <span>Tarefas Comuns</span><a href="https://pt.wikipedia.org/wiki/Vis%C3%A3o_computacional#Aplica%C3%A7%C3%B5es" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Tarefas Comuns de Visão Computacional">&gt;</a>
+                                    </div>
+                                     <ul>
+                                        <li><div><span>Classificação de Imagens</span><a href="https://en.wikipedia.org/wiki/Image_classification" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Classificação de Imagens">&gt;</a></div></li>
+                                        <li><div><span>Detecção de Objetos</span><a href="https://pt.wikipedia.org/wiki/Dete%C3%A7%C3%A3o_de_objetos" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Detecção de Objetos">&gt;</a></div></li>
+                                        <li><div><span>Segmentação Semântica</span><a href="https://pt.wikipedia.org/wiki/Segmenta%C3%A7%C3%A3o_(processamento_de_imagem)" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Segmentação Semântica">&gt;</a></div></li>
+                                        <li><div><span>Reconhecimento Facial</span><a href="https://pt.wikipedia.org/wiki/Sistema_de_reconhecimento_facial" target="_blank" rel="noopener noreferrer" class="link-btn" title="Ver mais sobre Reconhecimento Facial">&gt;</a></div></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleciona todos os SPANs dentro de LIs que são "collapsible"
+            const collapsibleSpans = document.querySelectorAll('.tree li.collapsible > div > span');
+
+            collapsibleSpans.forEach(span => {
+                span.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    // O LI pai agora é o avô do span (span -> div -> li)
+                    const parentLi = this.parentElement.parentElement;
+                    parentLi.classList.toggle('collapsed');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
