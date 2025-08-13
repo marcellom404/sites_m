@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-alvo8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Nome | Portfólio</title>
+    <style>
+/* Estilos Gerais */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header nav ul {
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ddd;
+}
+
+main {
+    padding: 20px;
+    max-width: 960px;
+    margin: auto;
+}
+
+section {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h2 {
+    border-bottom: 2px solid #f4f4f4;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+#projetos .projeto {
+    margin-bottom: 15px;
+}
+
+#contato form input,
+#contato form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#contato form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+}
+        /* --- Estilo para o Botão de Link --- */
+        .link-btn {
+            background-color: #e2e8f0;
+            color: #475569;
+            border: none;
+            border-radius: 6px;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.1s ease;
+            text-decoration: none;
+        }
+        .link-btn:hover {
+            background-color: #cbd5e1;
+            color: #1e293b;
+        }
+                /* Estilo dos botões/links */
+        .menu-button {
+            display: block;
+            width: 20%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #1877f2, #3b5998);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 60;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .menu-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="introducao">
+            <h1>Seu Nome Completo</h1>
+            <h2>Seu Cargo ou Título Profissional</h2>
+            <p>Uma breve descrição sobre você e suas paixões. Fale sobre o que te motiva e o que você busca em sua carreira.</p>
+        </section>
+
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <p>Aqui você pode detalhar mais sobre sua jornada profissional, suas experiências e como você chegou até aqui. Fale sobre sua formação, cursos relevantes e o que você aprendeu ao longo do caminho.</p>
+            <h3>Habilidades</h3>
+            <ul>
+                <li>Sua primeira habilidade (ex: HTML5, CSS3, JavaScript)</li>
+                <li>Sua segunda habilidade (ex: React, Vue, Angular)</li>
+                <li>Sua terceira habilidade (ex: Node.js, Python, Java)</li>
+                <li>E assim por diante...</li>
+            </ul>
+        </section>
+
+        <section id="projetos">
+            <h2>Meus Projetos</h2>
+            <div class="projeto">
+                <h3>Nome do Projeto 1</h3>
+                <p>Descreva seu projeto. Fale sobre o problema que ele resolve, as tecnologias que você utilizou e qual foi o seu papel no desenvolvimento.</p>
+                <a href="#">Link para o projeto</a>
+            </div>
+            <div class="projeto">
+                <h3>Nome do Projeto 2</h3>
+                <p>Descreva seu projeto. Fale sobre o problema que ele resolve, as tecnologias que você utilizou e qual foi o seu papel no desenvolvimento.</p>
+                <a href="#">Link para o projeto</a>
+            </div>
+            <div class="projeto">
+                <h3>Nome do Projeto 3</h3>
+                <p>Descreva seu projeto. Fale sobre o problema que ele resolve, as tecnologias que você utilizou e qual foi o seu papel no desenvolvimento.</p>
+                <a href="#">Link para o projeto</a>
+            </div>
+        </section>
+
+        <section id="contato">
+            <h2>Contato</h2>
+            <p>Você pode me encontrar nas redes sociais ou me enviar um email diretamente.</p>
+            <li>
+                <a href="/"  class="mini-menu-button">email</a>
+            </li>
+            <li>
+                <a href="/"  class="mini-menu-button">github</a>
+            </li>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Seu Nome. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
