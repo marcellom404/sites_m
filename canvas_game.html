@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Design Canvas v1.3</title>
+    
+    <style>
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        /* Estilo do Cabeçalho */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ccc;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #333;
+            display: inline-block;
+        }
+
+        .header .version {
+            font-size: 0.6em;
+            vertical-align: top;
+            margin-left: 5px;
+            color: #555;
+            font-weight: normal;
+        }
+
+        .header-info {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            font-size: 0.9em;
+            margin-top: -30px; /* Ajusta a posição para o canto superior direito */
+        }
+
+        .header-info span {
+            font-weight: bold;
+        }
+
+        /* Layout do Canvas (Grid) */
+        .canvas-grid {
+            display: grid;
+            /* Define 5 colunas de tamanho igual */
+            grid-template-columns: repeat(5, 1fr);
+            /* Define 2 linhas com altura flexível. A 3ª linha não é explícita, mas flui. */
+            grid-template-rows: auto auto auto;
+            gap: 15px; /* Espaço entre os blocos */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Estilo Básico do Bloco */
+        .bloco {
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            min-height: 150px;
+            position: relative;
+            overflow: hidden;
+            /* Linha tracejada de encaixe (simulação) */
+            border: 5px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .bloco h2 {
+            font-size: 1.2em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .bloco .icone {
+            font-size: 2em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* As cores dos blocos baseadas na imagem */
+        .azul { background-color: #007bff; }
+        .ciano { background-color: #00bcd4; }
+        .verde { background-color: #4caf50; }
+        .verde-limao { background-color: #8bc34a; }
+        .amarelo { background-color: #ffc107; color: #333; }
+
+        .roxo { background-color: #673ab7; }
+        .magenta { background-color: #e91e63; }
+        .vermelho { background-color: #f44336; }
+        .laranja { background-color: #ff9800; }
+        .amarelo-claro { background-color: #ffd600; color: #333; }
+
+        .cinza {
+            background-color: #9c27b0; /* Roxo escuro para o "Cenas de Corte" */
+            /* Este bloco ocupa a primeira coluna da terceira linha */
+            grid-column: 1 / 2;
+        }
+
+        /* Para garantir que a linha do meio tenha 5 blocos */
+        .canvas-grid > div:nth-child(6) { grid-row: 2; grid-column: 1; }
+        .canvas-grid > div:nth-child(7) { grid-row: 2; grid-column: 2; }
+        .canvas-grid > div:nth-child(8) { grid-row: 2; grid-column: 3; }
+        .canvas-grid > div:nth-child(9) { grid-row: 2; grid-column: 4; }
+        .canvas-grid > div:nth-child(10) { grid-row: 2; grid-column: 5; }
+
+        /* Para garantir que o bloco de baixo fique sozinho na terceira linha */
+        .canvas-grid > div:nth-child(11) {
+            grid-row: 3;
+            grid-column: 1;
+            /* Aumenta a altura para o bloco inferior (opcional) */
+            min-height: 180px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>GAME DESIGN CANVAS <span class="version">v1.3</span></h1>
+        <div class="header-info">
+            <p>Projeto para: <span>[Nome do Projeto]</span></p>
+            <p>Projeto de: <span>[Nome do Designer]</span></p>
+            <p>Data: <span>[Data Atual]</span></p>
+            <p>Iteração: <span>[Número da Iteração]</span></p>
+        </div>
+    </header>
+
+    <main class="canvas-grid">
+        <div class="bloco azul" id="plataforma">
+            <span class="icone">🏭</span>
+            <h2>Plataforma</h2>
+            <p>[Detalhes sobre as plataformas: PC, Mobile, Console]</p>
+        </div>
+        <div class="bloco ciano" id="conceito">
+            <span class="icone">💭</span>
+            <h2>Conceito</h2>
+            <p>[Detalhes sobre a ideia central e Gênero]</p>
+        </div>
+        <div class="bloco verde" id="jogabilidade">
+            <span class="icone">🎮</span>
+            <h2>Jogabilidade</h2>
+            <p>[Detalhes sobre o Core Loop e a Experiência]</p>
+        </div>
+        <div class="bloco verde-limao" id="fluxo-do-jogo">
+            <span class="icone">➡️</span>
+            <h2>Fluxo do Jogo</h2>
+            <p>[Detalhes sobre a Estrutura: Níveis, Progressão]</p>
+        </div>
+        <div class="bloco amarelo" id="controle">
+            <span class="icone">🕹️</span>
+            <h2>Controle</h2>
+            <p>[Detalhes sobre o Mapeamento de Botões/Comandos]</p>
+        </div>
+
+        <div class="bloco roxo" id="interfaces">
+            <span class="icone">🖥️</span>
+            <h2>Interfaces</h2>
+            <p>[Detalhes sobre HUD, Menus e UX]</p>
+        </div>
+        <div class="bloco magenta" id="mundo-do-jogo">
+            <span class="icone">🌍</span>
+            <h2>Mundo do Jogo</h2>
+            <p>[Detalhes sobre o Cenário, Lore e Atmosfera]</p>
+        </div>
+        <div class="bloco vermelho" id="chefes-inimigos">
+            <span class="icone">👾</span>
+            <h2>Chefes & Inimigos</h2>
+            <p>[Detalhes sobre a IA, Padrões de Ataque e Design]</p>
+        </div>
+        <div class="bloco laranja" id="mecanica-poderes">
+            <span class="icone">⚙️</span>
+            <h2>Mecânica & Poderes</h2>
+            <p>[Detalhes sobre as Ações do Jogador e Habilidades Especiais]</p>
+        </div>
+        <div class="bloco amarelo-claro" id="personagens">
+            <span class="icone">👤</span>
+            <h2>Personagens</h2>
+            <p>[Detalhes sobre o Protagonista, NPCs, História]</p>
+        </div>
+
+        <div class="bloco cinza" id="cenas-bonus">
+            <span class="icone">🎬</span>
+            <h2>Cenas de Corte, Material Bônus Comps</h2>
+            <p>[Detalhes sobre Cinematics, Colecionáveis, etc.]</p>
+        </div>
+    </main>
+</body>
+</html>
