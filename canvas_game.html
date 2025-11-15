@@ -122,6 +122,32 @@
             /* Aumenta a altura para o bloco inferior (opcional) */
             min-height: 180px;
         }
+
+        /* Media Query para Telas Menores (Tablets) */
+        @media (max-width: 768px) {
+            .canvas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Reseta o posicionamento explícito dos blocos */
+            .canvas-grid > div,
+            .canvas-grid > div:nth-child(6),
+            .canvas-grid > div:nth-child(7),
+            .canvas-grid > div:nth-child(8),
+            .canvas-grid > div:nth-child(9),
+            .canvas-grid > div:nth-child(10),
+            .canvas-grid > div:nth-child(11) {
+                grid-row: auto;
+                grid-column: auto;
+            }
+        }
+
+        /* Media Query para Telas Muito Pequenas (Celulares) */
+        @media (max-width: 480px) {
+            .canvas-grid {
+                grid-template-columns: 1fr; /* 1 coluna */
+            }
+        }
     </style>
 </head>
 <body>
